@@ -1,0 +1,25 @@
+<style> 
+		.thumbnail{max-width: 100%;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+border-color: transparent}
+} </style> 
+
+<h1>Listing ideas <span class="glyphicon glyphicon-heart"></span>
+</h1>
+<% @ideas.in_groups_of(3) do |group| %>
+<div class="row">
+  <% group.compact.each do |idea| %>
+  <div class="col-md-4" >
+    <div class="thumbnail">
+      <%= image_tag idea.picture_url, :width => '100%' if idea.picture.present?%>
+      <div class="btn btn-default" role = "button">
+        <h4><%= link_to idea.name, idea %></h4>
+        <%= idea.description %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>

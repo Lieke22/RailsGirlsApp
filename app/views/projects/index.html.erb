@@ -1,0 +1,25 @@
+
+<style> 
+		.thumbnail{max-width: 100%;
+background-color: transparent;
+border-collapse: collapse;
+border-spacing: 0;
+border-color: transparent}
+} </style> 
+
+<h1>Listing Projects <span class="glyphicon glyphicon-heart"></span></h1>
+<% @projects.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |project| %>
+      <div class="col-md-4">
+      <div class="thumbnail">
+      <%= image_tag project.picture_url, :width => '100%' if project.picture.present?%>
+      <div class="btn btn-default col-md-4" role = "button">
+        <h4><%= link_to project.name, project %></h4>
+        <%= project.description %>
+      </div>
+    </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
